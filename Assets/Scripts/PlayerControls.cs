@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Transform cam;
+    public Transform cam;
     [Space]
     [Header("Speed of Player")]
     [SerializeField] private float speed;
@@ -41,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
         movemnetX = moveVector.x;
         movemnetY = moveVector.y;
-
-        Debug.Log("Move");
     }
 
     void Movement()
