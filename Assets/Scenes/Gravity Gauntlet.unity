@@ -420,8 +420,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1129187351}
-  m_Follow: {fileID: 1129187351}
+  m_LookAt: {fileID: 392772120}
+  m_Follow: {fileID: 392772120}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 40
@@ -571,6 +571,12 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: -5630151704836100654, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   ZAxis: {fileID: 0}
+--- !u!4 &392772120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4673836774895433618, guid: 27b0d601f632d534ba93e57de7be0705,
+    type: 3}
+  m_PrefabInstance: {fileID: 230861654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &472514983
 GameObject:
   m_ObjectHideFlags: 3
@@ -1134,12 +1140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1129187351 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4673836774895433618, guid: 27b0d601f632d534ba93e57de7be0705,
-    type: 3}
-  m_PrefabInstance: {fileID: 230861654}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1497933431
 GameObject:
   m_ObjectHideFlags: 0
