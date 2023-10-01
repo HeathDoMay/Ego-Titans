@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
 
     Rigidbody rb;
+
     float movemnetX;
     float movemnetY;
 
