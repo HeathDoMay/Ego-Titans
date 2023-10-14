@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class Gravity : MonoBehaviour
 {
-    [SerializeField] public float speed = 5;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private Rigidbody rb;
     private float gravity = 5f;
@@ -29,35 +30,42 @@ public class Gravity : MonoBehaviour
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);
     }
 
-    private void OnFire(InputValue fireValue)
+    private void OnGravityToggle(InputValue value)
     {
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
         if (gravity > 0 && gravFix == 1f)
         {
             Debug.Log(gravFix);
             gravFix += 1f;
             gravity = -5f;
-            transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            transposer.m_FollowOffset = new Vector3(0, 3, -10);
+
         }
         else if (gravity > 0 && gravFix == 3f)
         {
             Debug.Log(gravFix);
             gravFix = 0f;
             gravity = -5f;
-            transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            transposer.m_FollowOffset = new Vector3(0, 3, -10);
         }
         else if (gravity < 0 && gravFix == 0f)
         {
             Debug.Log(gravFix);
             gravFix += 1f;
             gravity = 5f;
-            transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            transposer.m_FollowOffset = new Vector3(0, -3f, -10);
         }
         else if (gravity < 0 && gravFix == 2f)
         {
             Debug.Log(gravFix);
             gravFix += 1f;
             gravity = 5f;
-            transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            transposer.m_FollowOffset = new Vector3(0, -3f, -10);
         }
 
         Physics.gravity = new Vector3(0, gravity, 0);
