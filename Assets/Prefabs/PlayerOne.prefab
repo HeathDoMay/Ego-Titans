@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3186134514755880187}
-  m_LocalRotation: {x: 0.087443665, y: 0.000000004285118, z: -3.7614728e-10, w: 0.9961695}
+  m_LocalRotation: {x: 0.087443665, y: -0.000000004285118, z: 3.7614728e-10, w: 0.9961695}
   m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -198,7 +198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3808710591786496759}
-  m_LocalRotation: {x: 0.087443665, y: 0.000000004285118, z: -3.7614728e-10, w: 0.9961695}
+  m_LocalRotation: {x: 0.087443665, y: -0.000000004285118, z: 3.7614728e-10, w: 0.9961695}
   m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 3006602370979972819}
   - component: {fileID: 4021367432260458929}
   - component: {fileID: 5231124614234086833}
+  - component: {fileID: 5337574911788493957}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Untagged
@@ -475,6 +476,19 @@ MonoBehaviour:
   cam: {fileID: 6147715023663542240}
   speed: 15
   maxSpeed: 20
+--- !u!114 &5337574911788493957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4424599773757421214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2037a4df095394cb2d8c4ec3e881b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &8459332476443832153
 GameObject:
   m_ObjectHideFlags: 0
