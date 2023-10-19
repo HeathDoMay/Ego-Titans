@@ -8,9 +8,9 @@ public class NewGravityTest : MonoBehaviour
    // private new ConstantForce constantForce;
     Rigidbody rb;
     Vector3 forceDirection;
-    bool gravitySwitch = false;
+    bool gravitySwitch;
 
-    float speed = 1f;
+    float speed = 5f;
     float maxSpeed = 10f;
 
     private void Awake()
@@ -22,13 +22,14 @@ public class NewGravityTest : MonoBehaviour
     private void Start()
     {
         // constantForce.force = forceDirection;
+        forceDirection = new Vector3(0, 0, 0);
     }
 
     private void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            gravitySwitch = !gravitySwitch;
+            gravitySwitch = true;
         }
 
         //if (gravitySwitch)
@@ -45,5 +46,26 @@ public class NewGravityTest : MonoBehaviour
         //}
 
         Debug.Log(gravitySwitch);
+    }
+
+    private void FixedUpdate()
+    {
+        SwitchGravity(gravitySwitch);
+    }
+
+    void SwitchGravity(bool gravitySwitch)
+    {
+        if (gravitySwitch == true)
+        {
+            forceDirection = new Vector3(0, 9.86f, 0);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.AddForce(forceDirection * speed * Time.deltaTime);
+        }
+        else
+        {
+            forceDirection = new Vector3(0, -9.86f, 0);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.AddForce(forceDirection * speed * Time.deltaTime);
+        }
     }
 }
