@@ -12,7 +12,7 @@ public class Gravity : MonoBehaviour
     private float gravity = 5f;
     private float gravFix = 0f;
 
-    //bool isGravityUp = true;
+    bool isGravityUp = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class Gravity : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
-        //transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         gravity = -5f;
     }
 
@@ -30,7 +30,7 @@ public class Gravity : MonoBehaviour
         rb.AddForce(Physics.gravity, ForceMode.Acceleration);
     }
 
-    private void OnGravityToggle()
+    private void OnPlayerOneGravity()
     {
         var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
 
@@ -71,26 +71,26 @@ public class Gravity : MonoBehaviour
         Physics.gravity = new Vector3(0, gravity, 0);
     }
 
-    //USING UNITY EVENTS TO CALL
+    //    USING UNITY EVENTS TO CALL
 
-    //public void GravityToggle(InputAction.CallbackContext context)
-    //{
-    //    var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-
-    //    if (context.performed)
+    //    public void GravityToggle(InputAction.CallbackContext context)
     //    {
-    //        isGravityUp = !isGravityUp;
+    //        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
 
-    //        Physics.gravity = isGravityUp ? new Vector3(0, -9.81f, 0) : new Vector3(0, 9.81f, 0);
-    //    }
+    //        if (context.performed)
+    //        {
+    //            isGravityUp = !isGravityUp;
 
-    //    if(isGravityUp)
-    //    {
-    //        transposer.m_FollowOffset = new Vector3(0, 3, -10);
+    //            Physics.gravity = isGravityUp ? new Vector3(0, -9.81f, 0) : new Vector3(0, 9.81f, 0);
+    //        }
+
+    //        if (isGravityUp)
+    //        {
+    //            transposer.m_FollowOffset = new Vector3(0, 3, -10);
+    //        }
+    //        else
+    //        {
+    //            transposer.m_FollowOffset = new Vector3(0, -3, -10);
+    //        }
     //    }
-    //    else
-    //    {
-    //        transposer.m_FollowOffset = new Vector3(0, -3, -10);
-    //    }
-    //}
 }
