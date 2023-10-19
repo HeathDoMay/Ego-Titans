@@ -7,10 +7,9 @@ using Cinemachine;
 public class Gravity : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private float gravity;
 
-    private Rigidbody rb;
-    private float gravity = 500f;
-
+    Rigidbody rb;
     bool isGravityUp = true;
 
     private void Awake()
@@ -30,12 +29,12 @@ public class Gravity : MonoBehaviour
         
         if(isGravityUp)
         {
-            rb.AddForce(transform.up * gravity);
+            rb.AddForce(Vector3.up * gravity);
             transposer.m_FollowOffset = new Vector3(0, -3, -10);
         }
         else
         {
-            rb.AddForce(transform.up * -gravity);
+            rb.AddForce(Vector3.down * gravity);
             transposer.m_FollowOffset = new Vector3(0, 3, -10);
         }
 

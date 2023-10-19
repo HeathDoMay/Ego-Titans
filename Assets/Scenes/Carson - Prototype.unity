@@ -1001,6 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1700881514}
+  gravity: 500
 --- !u!1001 &815500183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2501,17 +2502,27 @@ PrefabInstance:
     - target: {fileID: 2959963316569630783, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004285118
+      value: -0.000000004285118
       objectReference: {fileID: 0}
     - target: {fileID: 2959963316569630783, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.7614728e-10
+      value: 3.7614728e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006602370979972819, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3006602370979972819, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: m_UseGravity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006602370979972819, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 3808710591786496759, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
@@ -2541,12 +2552,12 @@ PrefabInstance:
     - target: {fileID: 6147715023663542240, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000004285118
+      value: -0.000000004285118
       objectReference: {fileID: 0}
     - target: {fileID: 6147715023663542240, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.7614728e-10
+      value: 3.7614728e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6826874643125274665, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
