@@ -6,7 +6,10 @@ using Cinemachine;
 
 public class Gravity : MonoBehaviour
 {
+    [Header("Cinemachine Camera")]
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+
+    [Header("Gravity Speed")]
     [SerializeField] private float gravity;
 
     Rigidbody rb;

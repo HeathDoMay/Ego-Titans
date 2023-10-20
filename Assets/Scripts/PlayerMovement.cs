@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Speed of Player")]
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float turnSpeed;
 
     Rigidbody rb;
 

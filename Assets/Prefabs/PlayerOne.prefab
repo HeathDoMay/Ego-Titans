@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 3006602370979972819}
   - component: {fileID: 4126983396649917180}
   - component: {fileID: 5231124614234086833}
+  - component: {fileID: 61010642903193361}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Untagged
@@ -345,7 +346,7 @@ Transform:
   - {fileID: 6147715023663542240}
   - {fileID: 2959963316569630783}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2450927197891629309
 MeshFilter:
@@ -354,7 +355,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4424599773757421214}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2534964839176971238, guid: 20fa3915fcbf2b14aacc1a480521fbb2, type: 3}
 --- !u!23 &1153698758337607836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -443,7 +444,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!114 &4126983396649917180
 MonoBehaviour:
@@ -472,7 +473,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -491,6 +492,20 @@ MonoBehaviour:
   cam: {fileID: 6147715023663542240}
   speed: 15
   maxSpeed: 20
+--- !u!114 &61010642903193361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4424599773757421214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2037a4df095394cb2d8c4ec3e881b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 5892486613079588564}
+  gravity: 500
 --- !u!1 &8459332476443832153
 GameObject:
   m_ObjectHideFlags: 0
