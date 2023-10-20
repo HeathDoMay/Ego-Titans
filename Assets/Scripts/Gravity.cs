@@ -6,68 +6,43 @@ using Cinemachine;
 
 public class Gravity : MonoBehaviour
 {
+    [Header("Cinemachine Camera")]
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
-    private Rigidbody rb;
-    private float gravity = 5f;
-    private float gravFix = 0f;
-    private Quaternion rot;
+    [Header("Gravity Speed")]
+    [SerializeField] private float gravity;
+
+    Rigidbody rb;
+    bool isGravityUp = true;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rot = transform.rotation;
         rb.useGravity = false;
-
-        //transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        gravity = -5f;
     }
 
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        rb.AddForce(Physics.gravity, ForceMode.Acceleration);
-    }
-
-    private void OnGravityToggle(InputValue value)
+    private void OnPlayerOneGravity()
     {
         var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-
-        if (gravity > 0 && gravFix == 1f)
+        
+        if(isGravityUp)
         {
-            Debug.Log(gravFix);
-            gravFix += 1f;
-            gravity = -5f;
-            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
-            transposer.m_FollowOffset = new Vector3(0, 3, -10);
-
+            rb.AddForce(Vector3.up * gravity);
+            transposer.m_FollowOffset = new Vector3(0, -3, -10);
         }
-        else if (gravity > 0 && gravFix == 3f)
+        else
         {
-            Debug.Log(gravFix);
-            gravFix = 0f;
-            gravity = -5f;
-            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
+            rb.AddForce(Vector3.down * gravity);
             transposer.m_FollowOffset = new Vector3(0, 3, -10);
         }
-        else if (gravity < 0 && gravFix == 0f)
-        {
-            Debug.Log(gravFix);
-            gravFix += 1f;
-            gravity = 5f;
-            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
-            transposer.m_FollowOffset = new Vector3(0, -3f, -10);
-        }
-        else if (gravity < 0 && gravFix == 2f)
-        {
-            Debug.Log(gravFix);
-            gravFix += 1f;
-            gravity = 5f;
-            //transform.Rotate(0f, rot.y * 180f - 180, 180f);
-            transposer.m_FollowOffset = new Vector3(0, -3f, -10);
-        }
 
-        Physics.gravity = new Vector3(0, gravity, 0);
+        isGravityUp = !isGravityUp;
+
+        Debug.Log($"Bool: {isGravityUp}");
     }
 }
