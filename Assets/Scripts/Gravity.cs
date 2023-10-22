@@ -43,6 +43,6 @@ public class Gravity : MonoBehaviour
 
         isGravityUp = !isGravityUp;
 
-        Debug.Log($"Bool: {isGravityUp}");
+        //Debug.Log($"Bool: {isGravityUp}");
     }
 }
