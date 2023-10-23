@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class TrackCheckpoints : MonoBehaviour
 {
-    public event EventHandler OnCorrectCheckpoint;
-    public event EventHandler OnWrongCheckpoint;
-
+    // Players
     [SerializeField] private List<Transform> racerTransformList;
+
+    // lists
     private List<CheckpointSingle> CheckpointSingleList;
     private List<int> nextCheckpointSingleIndexList;
 
+    // C# events
+    public event EventHandler OnCorrectCheckpoint;
+    public event EventHandler OnWrongCheckpoint;
+
     private void Awake()
     {
+        // finding the container object with the checkpoints inside of it
         Transform checkpointsTransform = transform.Find("Checkpoints");
         CheckpointSingleList = new List<CheckpointSingle>();
 
@@ -26,6 +31,7 @@ public class TrackCheckpoints : MonoBehaviour
         }
 
         nextCheckpointSingleIndexList = new List<int>();
+
         foreach (Transform racerTransfrom in racerTransformList)
         {
             nextCheckpointSingleIndexList.Add(0);
@@ -37,6 +43,7 @@ public class TrackCheckpoints : MonoBehaviour
     public void RacerThroughCheckpoint(CheckpointSingle checkpointSingle, Transform racerTransform)
     {
         int nextCheckpointSingleIndex = nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)];
+
         // checking if the index of the list is equal to the next checkpoint, EX: index 0 == 0, index 1 == 1
         if (CheckpointSingleList.IndexOf(checkpointSingle) == nextCheckpointSingleIndex)
         {
