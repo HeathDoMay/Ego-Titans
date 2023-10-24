@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckpointSingle : MonoBehaviour
 {
+    // script reference
     private TrackCheckpoints trackCheckpoints;
     private MeshRenderer meshRenderer;
 
