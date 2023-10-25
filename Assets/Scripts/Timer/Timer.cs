@@ -5,7 +5,7 @@ using System;
 public class Timer
 {
     // remainging seconds
-    public float RemainingSeconds { get; private set; }
+    public float RemainingSeconds { get; set; }
 
     // C# event
     public event Action OnTimerEnd;
