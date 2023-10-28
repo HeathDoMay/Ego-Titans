@@ -21,7 +21,7 @@ public class CheckpointSingle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // checking to see is the script PlayerMovement is on the player
-        if(other.TryGetComponent(out PlayerMovement playerMovement))
+        if(other.TryGetComponent(out ShipController shipController))
         {
             // displaying the name of the checkpoint the player went through
             trackCheckpoints.RacerThroughCheckpoint(this, other.transform);

@@ -6,9 +6,6 @@ using Cinemachine;
 
 public class Gravity : MonoBehaviour
 {
-    [Header("Cinemachine Camera")]
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
-
     [Header("Gravity Speed")]
     [SerializeField] private float gravity;
 
@@ -24,25 +21,23 @@ public class Gravity : MonoBehaviour
     void Start()
     {
         rb.useGravity = false;
+
+        transform.Rotate(0f, 0f, 0f);
     }
 
-    private void OnPlayerOneGravity()
+    private void OnGravity()
     {
-        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-        
-        if(isGravityUp)
+        if (isGravityUp)
         {
             rb.AddForce(Vector3.up * gravity);
-            transposer.m_FollowOffset = new Vector3(0, -3, -10);
+            transform.Rotate(0f, 0f, 180f);
         }
         else
         {
             rb.AddForce(Vector3.down * gravity);
-            transposer.m_FollowOffset = new Vector3(0, 3, -10);
+            transform.Rotate(0f, 0f, -180f);
         }
 
         isGravityUp = !isGravityUp;
-
-        //Debug.Log($"Bool: {isGravityUp}");
     }
 }

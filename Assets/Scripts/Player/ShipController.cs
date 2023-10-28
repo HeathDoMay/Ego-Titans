@@ -1,31 +1,30 @@
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField]
-    private float forwardSpeed, strafeSpeed;
+    
+    [Header("Movement Values")]
+    [SerializeField] private float forwardSpeed;
+    [SerializeField] private float strafeSpeed;
+    [SerializeField] private float lookSpeed;
 
-    [SerializeField]
-    private float forwardAcceleration, strafeAcceleration;
+    [Header("Acceleration Values")]
+    [SerializeField] private float forwardAcceleration;
+    [SerializeField] private float strafeAcceleration;
+    [SerializeField] private float turnAcceleration;
 
-    [SerializeField]
-    private float lookSpeed;
-
-    private float activeForwardSpeed, activeStrafeSpeed;
+    float activeForwardSpeed, activeStrafeSpeed, activeTurnSpeed;
 
     float movementX, movementY;
-    float lookX, lookY;
-
-    Vector2 lookInput;
-    Vector2 screenCenter, mouseDistance;
+    float lookX;
 
     private void Start()
     {
-        screenCenter.x = Screen.width * 0.5f;
-        screenCenter.y = Screen.height * 0.5f;
-
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -36,13 +35,9 @@ public class ShipController : MonoBehaviour
 
     private void Look()
     {
-        mouseDistance.x = (lookX - screenCenter.x) / screenCenter.x;
-        mouseDistance.y = (lookY - screenCenter.y) / screenCenter.y;
-
-        // -mouseDistance.y * lookSpeed * Time.deltaTime
-
-        mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
-        transform.Rotate(0f, mouseDistance.x * lookSpeed * Time.deltaTime, 0f, Space.Self);
+        float horizontalRotation = lookX * lookSpeed * Time.deltaTime;
+        activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
+        transform.Rotate(Vector3.up, activeTurnSpeed);
     }
 
     private void Movement()
@@ -64,11 +59,10 @@ public class ShipController : MonoBehaviour
 
     private void OnLook(InputValue value)
     {
-        Vector2 lookVector = value.Get<Vector2>();
+        Vector2 input = value.Get<Vector2>();
 
-        lookX = lookVector.x;
-        lookY = lookVector.y;
+        lookX = input.x;
 
-        Debug.Log(lookVector);
+        // Debug.Log(lookX);
     }
 }
