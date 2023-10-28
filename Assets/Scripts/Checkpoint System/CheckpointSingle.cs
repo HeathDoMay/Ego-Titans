@@ -21,7 +21,13 @@ public class CheckpointSingle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // checking to see is the script PlayerMovement is on the player
-        if(other.TryGetComponent(out ShipController shipController))
+        if(other.gameObject.name == "PlayerOne")
+        {
+            // displaying the name of the checkpoint the player went through
+            trackCheckpoints.RacerThroughCheckpoint(this, other.transform);
+        }
+
+        if (other.gameObject.name == "PlayerTwo")
         {
             // displaying the name of the checkpoint the player went through
             trackCheckpoints.RacerThroughCheckpoint(this, other.transform);
