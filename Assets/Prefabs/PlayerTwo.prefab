@@ -92,7 +92,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793958743087774097}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &8497981804896043740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ Transform:
   - {fileID: 1759305385601133388}
   - {fileID: 6264031655754602465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4042958165913138103
 BoxCollider:

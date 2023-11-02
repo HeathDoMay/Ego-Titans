@@ -1,7 +1,5 @@
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class ShipController : MonoBehaviour
 {
@@ -35,20 +33,30 @@ public class ShipController : MonoBehaviour
 
     private void Look()
     {
+        // creating a float to applying the look speed
         float horizontalRotation = lookX * lookSpeed * Time.deltaTime;
+
+        // lerping for rotation
         activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
+
+        // applying that rotation
         transform.Rotate(Vector3.up, activeTurnSpeed);
     }
 
     private void Movement()
     {
+        // forward movement
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, movementY * forwardSpeed, forwardAcceleration * Time.deltaTime);
+
+        // strafing
         activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, movementX * strafeSpeed, strafeAcceleration * Time.deltaTime);
 
+        // applying both of those movements
         transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
         transform.position += activeStrafeSpeed * Time.deltaTime * transform.right;
     }
 
+    // setting the global variables to the correct input value
     private void OnMove(InputValue value)
     {
         Vector2 moveVector = value.Get<Vector2>();
@@ -57,12 +65,11 @@ public class ShipController : MonoBehaviour
         movementY = moveVector.y;
     }
 
+    // setting the global variables to the correct input value
     private void OnLook(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
 
         lookX = input.x;
-
-        // Debug.Log(lookX);
     }
 }
