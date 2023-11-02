@@ -4,7 +4,7 @@ using System.Collections;
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement[] playerMovement;
+    [SerializeField] private ShipController[] shipController;
     [SerializeField] private TextMeshProUGUI countDownText;
 
     [SerializeField] private TimerBehaviour timerBehaviour;
@@ -19,6 +19,11 @@ public class StartGame : MonoBehaviour
     private void Start()
     {
         StartCoroutine(waiter());
+
+        for (int i = 0; i < shipController.Length; i++)
+        {
+            shipController[i].enabled = false;
+        }
     }
 
     private void Update()
@@ -36,9 +41,9 @@ public class StartGame : MonoBehaviour
 
     public void StartRace()
     {
-        for (int i = 0; i < playerMovement.Length; i++)
+        for (int i = 0; i < shipController.Length; i++)
         {
-            playerMovement[i].enabled = true;
+            shipController[i].enabled = true;
         }
     }
 }
