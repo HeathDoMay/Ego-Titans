@@ -15,7 +15,7 @@ public class SpawnFinishLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(trackCheckpoints.laps == 3)
+        if(trackCheckpoints.laps == 6)
         {
             if (other.gameObject.name == "PlayerOne")
             {
