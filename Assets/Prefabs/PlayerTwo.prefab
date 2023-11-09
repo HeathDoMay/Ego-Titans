@@ -267,10 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 50
-  strafeSpeed: 15
-  lookSpeed: 0.5
+  lookSpeed: 100
   forwardAcceleration: 10
-  strafeAcceleration: 3
   turnAcceleration: 5
 --- !u!114 &3539202041021545080
 MonoBehaviour:
@@ -284,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2037a4df095394cb2d8c4ec3e881b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 500
+  gravity: 1000
 --- !u!1001 &5865084087709167626
 PrefabInstance:
   m_ObjectHideFlags: 0

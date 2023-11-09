@@ -6,17 +6,15 @@ public class ShipController : MonoBehaviour
     
     [Header("Movement Values")]
     [SerializeField] private float forwardSpeed;
-    [SerializeField] private float strafeSpeed;
     [SerializeField] private float lookSpeed;
 
     [Header("Acceleration Values")]
     [SerializeField] private float forwardAcceleration;
-    [SerializeField] private float strafeAcceleration;
     [SerializeField] private float turnAcceleration;
 
-    float activeForwardSpeed, activeStrafeSpeed, activeTurnSpeed;
+    float activeForwardSpeed, activeTurnSpeed;
 
-    float movementX, movementY;
+    float movementY;
     float lookX;
 
     private void Start()
@@ -48,12 +46,8 @@ public class ShipController : MonoBehaviour
         // forward movement
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, movementY * forwardSpeed, forwardAcceleration * Time.deltaTime);
 
-        // strafing
-        activeStrafeSpeed = Mathf.Lerp(activeStrafeSpeed, movementX * strafeSpeed, strafeAcceleration * Time.deltaTime);
-
         // applying both of those movements
         transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
-        transform.position += activeStrafeSpeed * Time.deltaTime * transform.right;
     }
 
     // setting the global variables to the correct input value
@@ -61,7 +55,6 @@ public class ShipController : MonoBehaviour
     {
         Vector2 moveVector = value.Get<Vector2>();
 
-        movementX = moveVector.x;
         movementY = moveVector.y;
     }
 
