@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TrackCheckpoints : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class TrackCheckpoints : MonoBehaviour
     // Next checkpoint list
     private List<int> nextCheckpointSingleIndexList;
 
-    public int laps = 1;
+    // public UnityEvent CheckLaps;
 
     private void Awake()
     {
@@ -53,11 +54,21 @@ public class TrackCheckpoints : MonoBehaviour
             // loops back to zero after going through all the checkpoints
             nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)] = (nextCheckpointSingleIndex + 1) % checkpointSingleList.Count;
 
-            if(nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
-            {
-                laps++;
-                Debug.Log("Lap number: " + laps);
-            }
+            //if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
+            //{
+            //    TryGetComponent<LapBehaviour>(out LapBehaviour lapBehaviour);
+
+            //    lapBehaviour.numberOfLaps++;
+
+            //    if(lapBehaviour.numberOfLaps != 4)
+            //    {
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        CheckLaps.Invoke();
+            //    }
+            //}
 
             Debug.Log("Correct: " + racerTransform);
         }
