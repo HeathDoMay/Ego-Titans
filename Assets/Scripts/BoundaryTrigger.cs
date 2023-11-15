@@ -7,33 +7,33 @@ public class BoundaryTrigger : MonoBehaviour
     //force applied to push player back on track
     public float pushForce = 5.0f;
 
-    //tag to identify the checkpoint GameObject
-    public string checkTag = "Checkpoint";
+    //tag to identify the track GameObject
+    public string trackTag = "Track";
 
     //delay between applying forces (in frames)
     public int framesBetweenForces = 10;
     private int frameCounter = 0;
 
-    private Transform checkReference;
+    private Transform trackReference;
 
     private void Start()
     {
-        GameObject[] checkObjects = GameObject.FindGameObjectsWithTag(checkTag);
+        GameObject[] trackObjects = GameObject.FindGameObjectsWithTag(trackTag);
         float shortestDistance = float.MaxValue;
 
-        foreach (GameObject checkObject in checkObjects)
+        foreach (GameObject trackObject in trackObjects)
         {
-            float distance = Vector3.Distance(transform.position, checkObject.transform.position);
+            float distance = Vector3.Distance(transform.position, trackObject.transform.position);
             if (distance < shortestDistance)
             {
                 shortestDistance = distance;
-                checkReference = checkObject.transform;
+                trackReference = trackObject.transform;
             }
         }
     }
 
-    
-    void OnTriggerEnter(Collider other)
+    // Update is called once per frame
+    void OnTriggerStay(Collider other)
     {
         //checks to see if colliding with player
         if (other.CompareTag("Player"))
@@ -51,13 +51,16 @@ public class BoundaryTrigger : MonoBehaviour
                 if (playerRigidbody != null)
                 {
                     //calculate direction from player to track
-                    Vector3 pushDirection = checkReference.position - other.transform.position;
+                    Vector3 pushDirection = trackReference.position - other.transform.position;
                     pushDirection.Normalize();
 
                     //apply force in pushDirection to move player back on track
                     playerRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
                 }
             }
+
+            
+
             
         }
     }
