@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Track
   - FinalCheckpoint
+  - Boundary
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
