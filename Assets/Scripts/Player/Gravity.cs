@@ -18,7 +18,7 @@ public class Gravity : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb.useGravity = false;
 

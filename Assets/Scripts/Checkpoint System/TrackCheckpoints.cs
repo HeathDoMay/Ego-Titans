@@ -56,18 +56,7 @@ public class TrackCheckpoints : MonoBehaviour
 
             //if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
             //{
-            //    TryGetComponent<LapBehaviour>(out LapBehaviour lapBehaviour);
-
-            //    lapBehaviour.numberOfLaps++;
-
-            //    if(lapBehaviour.numberOfLaps != 4)
-            //    {
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        CheckLaps.Invoke();
-            //    }
+                
             //}
 
             Debug.Log("Correct: " + racerTransform);
