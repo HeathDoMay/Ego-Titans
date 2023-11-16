@@ -6,13 +6,12 @@ using UnityEngine.Events;
 
 public class TrackCheckpoints : MonoBehaviour
 {
-    // Players
     [SerializeField] private List<Transform> racerTransformList;
+    [SerializeField] private int lapsToComplete = 4;
+    [Space]
+    [SerializeField] private UnityEvent CheckLaps;
 
-    // Checkpoint list
     private List<CheckpointSingle> checkpointSingleList;
-
-    // Next checkpoint list
     private List<int> nextCheckpointSingleIndexList;
 
     // public UnityEvent CheckLaps;
@@ -45,6 +44,8 @@ public class TrackCheckpoints : MonoBehaviour
     {
         int nextCheckpointSingleIndex = nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)];
 
+        int laps = 1;
+
         // checking if the index of the list is equal to the next checkpoint, EX: index 0 == 0, index 1 == 1
         if (checkpointSingleList.IndexOf(checkpointSingle) == nextCheckpointSingleIndex)
         {
@@ -54,12 +55,16 @@ public class TrackCheckpoints : MonoBehaviour
             // loops back to zero after going through all the checkpoints
             nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)] = (nextCheckpointSingleIndex + 1) % checkpointSingleList.Count;
 
-            //if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
-            //{
-                
-            //}
+            if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
+            {
+                laps++;
+                print(laps);
 
-            Debug.Log("Correct: " + racerTransform);
+                if (laps == lapsToComplete)
+                    CheckLaps.Invoke();
+            }
+
+            //Debug.Log("Correct: " + racerTransform);
         }
         else
         {
