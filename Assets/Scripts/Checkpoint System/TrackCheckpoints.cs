@@ -14,7 +14,7 @@ public class TrackCheckpoints : MonoBehaviour
     private List<CheckpointSingle> checkpointSingleList;
     private List<int> nextCheckpointSingleIndexList;
 
-    // public UnityEvent CheckLaps;
+    public PlayerLaps[] playerLaps;
 
     private void Awake()
     {
@@ -44,8 +44,6 @@ public class TrackCheckpoints : MonoBehaviour
     {
         int nextCheckpointSingleIndex = nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)];
 
-        int laps = 1;
-
         // checking if the index of the list is equal to the next checkpoint, EX: index 0 == 0, index 1 == 1
         if (checkpointSingleList.IndexOf(checkpointSingle) == nextCheckpointSingleIndex)
         {
@@ -57,14 +55,24 @@ public class TrackCheckpoints : MonoBehaviour
 
             if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
             {
-                laps++;
-                print(laps);
+                if (playerLaps[0].gameObject.name == "PlayerOne")
+                {
+                    playerLaps[0].laps++;
+                }
+                else if (playerLaps[1].gameObject.name == "PlayerTwo")
+                {
+                    playerLaps[1].laps++;
+                }
+                else
+                {
+                    return;
+                }
 
-                if (laps == lapsToComplete)
+                if (playerLaps[0].laps == lapsToComplete || playerLaps[1].laps == lapsToComplete)
                     CheckLaps.Invoke();
             }
 
-            //Debug.Log("Correct: " + racerTransform);
+            Debug.Log("Correct: " + racerTransform);
         }
         else
         {
