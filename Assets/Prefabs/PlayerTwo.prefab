@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 50
-  lookSpeed: 100
+  lookSpeed: 75
   forwardAcceleration: 10
   turnAcceleration: 5
 --- !u!114 &3539202041021545080

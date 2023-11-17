@@ -479,7 +479,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1162327592231902332, guid: aed5cc48fbdfb6e4bb2983f361a28185,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1602105040}
+      addedObject: {fileID: 1602105045}
   m_SourcePrefab: {fileID: 100100000, guid: aed5cc48fbdfb6e4bb2983f361a28185, type: 3}
 --- !u!4 &256818851 stripped
 Transform:
@@ -666,11 +666,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerOne
       objectReference: {fileID: 0}
-    - target: {fileID: 7763934807271180067, guid: 7e1feb55b47b2544799d870fe6038698,
-        type: 3}
-      propertyPath: lookSpeed
-      value: 75
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -678,7 +673,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3097429403373057758, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1194411731}
+      addedObject: {fileID: 1194411736}
   m_SourcePrefab: {fileID: 100100000, guid: 7e1feb55b47b2544799d870fe6038698, type: 3}
 --- !u!4 &575948917 stripped
 Transform:
@@ -1319,6 +1314,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 907817421267640643, guid: 125bc6c848359874d94fb3f843b00f4d,
         type: 3}
+      propertyPath: playerOneLaps
+      value: 
+      objectReference: {fileID: 1194411736}
+    - target: {fileID: 907817421267640643, guid: 125bc6c848359874d94fb3f843b00f4d,
+        type: 3}
+      propertyPath: playerTwoLaps
+      value: 
+      objectReference: {fileID: 1602105045}
+    - target: {fileID: 907817421267640643, guid: 125bc6c848359874d94fb3f843b00f4d,
+        type: 3}
       propertyPath: restartButton
       value: 
       objectReference: {fileID: 1865707694}
@@ -1341,12 +1346,12 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLaps.Array.data[0]
       value: 
-      objectReference: {fileID: 1602105040}
+      objectReference: {fileID: 0}
     - target: {fileID: 907817421267640643, guid: 125bc6c848359874d94fb3f843b00f4d,
         type: 3}
       propertyPath: playerLaps.Array.data[1]
       value: 
-      objectReference: {fileID: 1602105040}
+      objectReference: {fileID: 0}
     - target: {fileID: 7982347039342964207, guid: 125bc6c848359874d94fb3f843b00f4d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1423,7 +1428,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 575948916}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1194411731
+--- !u!114 &1194411736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1746,8 +1751,7 @@ MonoBehaviour:
   racerTransformList:
   - {fileID: 575948917}
   - {fileID: 256818851}
-  lapsToComplete: 4
-  CheckLaps:
+  SpawnFinishLine:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 670985312}
@@ -1762,9 +1766,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerLaps:
-  - {fileID: 1194411731}
-  - {fileID: 1602105040}
+  lapsToComplete: 4
+  playerOneLaps: {fileID: 1194411736}
+  playerTwoLaps: {fileID: 1602105045}
 --- !u!1001 &1336208442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1893,7 +1897,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 256818850}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1602105040
+--- !u!114 &1602105045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1902,7 +1906,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1602105029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef79d4af35473447a3734fcdf30c597, type: 3}
+  m_Script: {fileID: 11500000, guid: ee66ec001aa32eb44933730fb9e12a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   laps: 1
