@@ -7,6 +7,10 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI finishLineText;
     [SerializeField] private GameObject restartButton;
+    [Space]
+    public PlayerOneLaps playerOneLaps;
+    public PlayerTwoLaps playerTwoLaps;
+    public TrackCheckpoints trackCheckpoints;
 
     private void Start()
     {
@@ -16,10 +20,30 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<ShipController>(out ShipController shipcontroller))
+        if(other.gameObject.name == "PlayerOne")
         {
-            finishLineText.text = $"{shipcontroller.gameObject.name} Wins!";
-            restartButton.SetActive(true);
+            if(playerOneLaps.laps == trackCheckpoints.lapsToComplete) 
+            {
+                finishLineText.text = $"{other.gameObject.name} Wins!";
+                restartButton.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Complete more laps!");
+            }
+        }
+
+        if(other.gameObject.name == "PlayerTwo")
+        {
+            if (playerTwoLaps.laps == trackCheckpoints.lapsToComplete)
+            {
+                finishLineText.text = $"{other.gameObject.name} Wins!";
+                restartButton.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Complete more laps!");
+            }
         }
     }
 }

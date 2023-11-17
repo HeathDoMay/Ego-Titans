@@ -151,7 +151,6 @@ GameObject:
   - component: {fileID: 5462146530996572103}
   - component: {fileID: 7763934807271180067}
   - component: {fileID: 4623003380651205599}
-  - component: {fileID: 9154662008862487826}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Player
@@ -174,7 +173,7 @@ Transform:
   - {fileID: 4009191068867885582}
   - {fileID: 5399689913454956783}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8515250534791925469
 BoxCollider:
@@ -268,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 50
-  lookSpeed: 100
+  lookSpeed: 75
   forwardAcceleration: 10
   turnAcceleration: 5
 --- !u!114 &4623003380651205599
@@ -284,34 +283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 2000
---- !u!114 &9154662008862487826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097429403373057758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58475082e9b4b5b43bd278f6a0e1ec1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfLaps: 1
-  CheckLaps:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnFinishLine, Assembly-CSharp
-        m_MethodName: InstantiateFinishLine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &5576921040275339012
 PrefabInstance:
   m_ObjectHideFlags: 0

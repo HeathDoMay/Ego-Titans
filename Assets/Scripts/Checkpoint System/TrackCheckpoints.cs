@@ -7,14 +7,17 @@ using UnityEngine.Events;
 public class TrackCheckpoints : MonoBehaviour
 {
     [SerializeField] private List<Transform> racerTransformList;
-    [SerializeField] private int lapsToComplete = 4;
     [Space]
-    [SerializeField] private UnityEvent CheckLaps;
+    [SerializeField] private UnityEvent SpawnFinishLine;
+    [Space]
+    public int lapsToComplete = 4;
+    [Space]
+    public PlayerOneLaps playerOneLaps;
+    public PlayerTwoLaps playerTwoLaps;
+    
 
     private List<CheckpointSingle> checkpointSingleList;
     private List<int> nextCheckpointSingleIndexList;
-
-    // public UnityEvent CheckLaps;
 
     private void Awake()
     {
@@ -44,8 +47,6 @@ public class TrackCheckpoints : MonoBehaviour
     {
         int nextCheckpointSingleIndex = nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)];
 
-        int laps = 1;
-
         // checking if the index of the list is equal to the next checkpoint, EX: index 0 == 0, index 1 == 1
         if (checkpointSingleList.IndexOf(checkpointSingle) == nextCheckpointSingleIndex)
         {
@@ -57,14 +58,21 @@ public class TrackCheckpoints : MonoBehaviour
 
             if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
             {
-                laps++;
-                print(laps);
+                if(racerTransform.name == "PlayerOne")
+                {
+                    playerOneLaps.laps++;
+                }
 
-                if (laps == lapsToComplete)
-                    CheckLaps.Invoke();
+                if (racerTransform.name == "PlayerTwo")
+                {
+                    playerTwoLaps.laps++;
+                }
+
+                if (playerOneLaps.laps == lapsToComplete || playerTwoLaps.laps == lapsToComplete)
+                    SpawnFinishLine.Invoke();
             }
 
-            //Debug.Log("Correct: " + racerTransform);
+            Debug.Log("Correct: " + racerTransform);
         }
         else
         {

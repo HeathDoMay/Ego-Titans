@@ -151,7 +151,6 @@ GameObject:
   - component: {fileID: 7716478381457991978}
   - component: {fileID: 109169052783245904}
   - component: {fileID: 3539202041021545080}
-  - component: {fileID: 2258854581219239245}
   m_Layer: 0
   m_Name: PlayerTwo
   m_TagString: Player
@@ -174,7 +173,7 @@ Transform:
   - {fileID: 1759305385601133388}
   - {fileID: 6264031655754602465}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4042958165913138103
 BoxCollider:
@@ -268,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardSpeed: 50
-  lookSpeed: 100
+  lookSpeed: 75
   forwardAcceleration: 10
   turnAcceleration: 5
 --- !u!114 &3539202041021545080
@@ -283,35 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2037a4df095394cb2d8c4ec3e881b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 1000
---- !u!114 &2258854581219239245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162327592231902332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58475082e9b4b5b43bd278f6a0e1ec1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfLaps: 1
-  CheckLaps:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SpawnFinishLine, Assembly-CSharp
-        m_MethodName: InstantiateFinishLine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  gravity: 2000
 --- !u!1001 &5865084087709167626
 PrefabInstance:
   m_ObjectHideFlags: 0
