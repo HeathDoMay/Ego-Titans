@@ -4,16 +4,19 @@ using System.Collections;
 
 public class StartGame : MonoBehaviour
 {
+    [Header("Player Controlls Array")]
     [SerializeField] private ShipController[] shipController;
+
+    [Header("Timer Reference")]
+    [SerializeField] private TimerBehaviour timerBehaviour;
+
+    [Header("Timer Text")]
     [SerializeField] private TextMeshProUGUI countDownText;
 
-    [SerializeField] private TimerBehaviour timerBehaviour;
-    
     IEnumerator waiter()
     {
         yield return new WaitForSeconds(8);
         countDownText.enabled = false;
-        // Destroy(this);
     }
 
     private void Start()

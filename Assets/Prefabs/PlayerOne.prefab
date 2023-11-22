@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5462146530996572103}
   - component: {fileID: 7763934807271180067}
   - component: {fileID: 4623003380651205599}
+  - component: {fileID: 8416971534100119171}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Player
@@ -283,6 +284,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 2000
+--- !u!114 &8416971534100119171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097429403373057758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708921008d8b4ec4fb12e91e32d077bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laps: 1
+  lapsText: {fileID: 0}
 --- !u!1001 &5576921040275339012
 PrefabInstance:
   m_ObjectHideFlags: 0

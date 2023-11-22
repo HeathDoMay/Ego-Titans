@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7982347039342964207
 Transform:
   m_ObjectHideFlags: 0
@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 77227979841125280}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 14.6, z: -187.5}
-  m_LocalScale: {x: 2, y: 1, z: 0.5}
+  m_LocalScale: {x: 3.7732415, y: 1, z: 9.169337}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!33 &3889971254950770664
 MeshFilter:
@@ -119,3 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e85e6489a9f4fa4a8efaaf5177e28fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishLineText: {fileID: 0}
+  restartButton: {fileID: 0}
+  playerOneLaps: {fileID: 0}
+  playerTwoLaps: {fileID: 0}
+  trackCheckpoints: {fileID: 0}
