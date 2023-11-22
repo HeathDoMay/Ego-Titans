@@ -5,12 +5,16 @@ using TMPro;
 
 public class FinishLine : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI finishLineText;
     [SerializeField] private GameObject restartButton;
-    [Space]
-    public PlayerOneLaps playerOneLaps;
-    public PlayerTwoLaps playerTwoLaps;
-    public TrackCheckpoints trackCheckpoints;
+
+    [Header("Player Laps Reference")]
+    [SerializeField] private Laps playerOneLaps;
+    [SerializeField] private Laps playerTwoLaps;
+
+    [Header("Checkpoint System Reference")]
+    [SerializeField] private TrackCheckpoints trackCheckpoints;
 
     private void Start()
     {

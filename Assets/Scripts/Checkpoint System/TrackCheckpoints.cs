@@ -6,15 +6,18 @@ using UnityEngine.Events;
 
 public class TrackCheckpoints : MonoBehaviour
 {
+    [Tooltip("List of player transforms. This is used to track what checkpoints players go through.")]
     [SerializeField] private List<Transform> racerTransformList;
-    [Space]
-    [SerializeField] private UnityEvent SpawnFinishLine;
-    [Space]
+
+    [Header("Laps to Complete")]
     public int lapsToComplete = 4;
-    [Space]
-    public PlayerOneLaps playerOneLaps;
-    public PlayerTwoLaps playerTwoLaps;
-    
+
+    [Header("Player Laps Reference")]
+    [SerializeField] private Laps playerOneLaps;
+    [SerializeField] private Laps playerTwoLaps;
+
+    [Header("Unity Event")]
+    [SerializeField] private UnityEvent SpawnFinishLine;
 
     private List<CheckpointSingle> checkpointSingleList;
     private List<int> nextCheckpointSingleIndexList;
