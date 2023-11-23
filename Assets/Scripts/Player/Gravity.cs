@@ -7,10 +7,12 @@ public class Gravity : MonoBehaviour
     [Header("Gravity Speed")]
     [SerializeField] private float gravity;
 
-    public Animator modelAnimator;
+    [Header("Delay in Seconds")]
+    [SerializeField] private float delay;
 
     Rigidbody rb;
     bool isGravityUp = true;
+    bool canUseGravity = true;
 
     private void Awake()
     {
@@ -21,24 +23,51 @@ public class Gravity : MonoBehaviour
     private void Start()
     {
         rb.useGravity = false;
-        transform.Rotate(0f, 0f, 0f);
+
+        // setting the initial rotation
+        transform.Rotate(0, 0, 0);
+    }
+
+    // Interface to calculate the rotation of the ship with a delay
+    IEnumerator Rotate(float rotationAmount)
+    {
+        yield return new WaitForSeconds(0.25f);
+        transform.Rotate(0f, 0f, rotationAmount);
     }
 
     private void OnGravity()
     {
-        if (isGravityUp)
+        // if bool is true then flip gravity
+        if(canUseGravity)
         {
-            rb.AddForce(Vector3.up * gravity);
-            //transform.Rotate(0f, 0f, 180f);
-            modelAnimator.SetTrigger("gravityUp");
-        }
-        else
-        {
-            rb.AddForce(Vector3.down * gravity);
-            //transform.Rotate(0f, 0f, -180f);
-            modelAnimator.SetTrigger("gravityDown");
-        }
+            if (isGravityUp)
+            {
+                // adding gravity and the rotation
+                rb.AddForce(Vector3.up * gravity);
+                StartCoroutine(Rotate(180));
 
-        isGravityUp = !isGravityUp;
+                // setting bool back to flase then calling a function setting it to true with a delay
+                canUseGravity = false;
+                Invoke(nameof(EnableInput), delay);
+            }
+            else
+            {
+                // adding gravity and the rotation
+                rb.AddForce(Vector3.down * gravity);
+                StartCoroutine(Rotate(-180));
+
+                // setting bool back to flase then calling a function setting it to true with a delay
+                canUseGravity = false;
+                Invoke(nameof(EnableInput), delay);
+            }
+
+            isGravityUp = !isGravityUp;
+        }
+    }
+
+    // function setting a bool to true
+    bool EnableInput()
+    {
+        return canUseGravity = true;
     }
 }

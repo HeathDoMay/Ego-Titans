@@ -283,7 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2037a4df095394cb2d8c4ec3e881b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 2000
+  gravity: 1500
+  delay: 1
 --- !u!114 &4346585006082182720
 MonoBehaviour:
   m_ObjectHideFlags: 0
