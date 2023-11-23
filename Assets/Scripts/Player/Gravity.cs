@@ -7,6 +7,8 @@ public class Gravity : MonoBehaviour
     [Header("Gravity Speed")]
     [SerializeField] private float gravity;
 
+    public Animator modelAnimator;
+
     Rigidbody rb;
     bool isGravityUp = true;
 
@@ -19,7 +21,6 @@ public class Gravity : MonoBehaviour
     private void Start()
     {
         rb.useGravity = false;
-
         transform.Rotate(0f, 0f, 0f);
     }
 
@@ -28,12 +29,14 @@ public class Gravity : MonoBehaviour
         if (isGravityUp)
         {
             rb.AddForce(Vector3.up * gravity);
-            transform.Rotate(0f, 0f, 180f);
+            //transform.Rotate(0f, 0f, 180f);
+            modelAnimator.SetTrigger("gravityUp");
         }
         else
         {
             rb.AddForce(Vector3.down * gravity);
-            transform.Rotate(0f, 0f, -180f);
+            //transform.Rotate(0f, 0f, -180f);
+            modelAnimator.SetTrigger("gravityDown");
         }
 
         isGravityUp = !isGravityUp;
