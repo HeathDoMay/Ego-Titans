@@ -4,7 +4,7 @@ using System.Collections;
 
 public class StartGame : MonoBehaviour
 {
-    [Header("Player Controlls Array")]
+    [Header("Player Controls Array")]
     [SerializeField] private ShipController[] shipController;
 
     [Header("Timer Reference")]
