@@ -1223,6 +1223,11 @@ PrefabInstance:
       propertyPath: lapsText
       value: 
       objectReference: {fileID: 1709249789}
+    - target: {fileID: 7716478381457991978, guid: aed5cc48fbdfb6e4bb2983f361a28185,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

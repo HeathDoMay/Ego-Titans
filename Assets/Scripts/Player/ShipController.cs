@@ -17,6 +17,8 @@ public class ShipController : MonoBehaviour
     float movementY;
     float lookX;
 
+    public bool isMoving = false;
+
     private void Start()
     {
         //Cursor.lockState = CursorLockMode.Confined;
@@ -34,11 +36,14 @@ public class ShipController : MonoBehaviour
         // creating a float to applying the look speed
         float horizontalRotation = lookX * lookSpeed * Time.deltaTime;
 
-        // lerping for rotation
-        activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
+        if(isMoving == true )
+        {
+            // lerping for rotation
+            activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
 
-        // applying that rotation
-        transform.Rotate(Vector3.up, activeTurnSpeed);
+            // applying that rotation
+            transform.Rotate(Vector3.up, activeTurnSpeed);
+        }
     }
 
     private void Movement()
@@ -46,15 +51,22 @@ public class ShipController : MonoBehaviour
         // forward movement
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, movementY * forwardSpeed, forwardAcceleration * Time.deltaTime);
 
-        // applying both of those movements
-        transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
+        if(movementY > 0 || movementY < 0)
+        {
+            // applying both of those movements
+            transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
     }
 
     // setting the global variables to the correct input value
     private void OnMove(InputValue value)
     {
         Vector2 moveVector = value.Get<Vector2>();
-
         movementY = moveVector.y;
     }
 
@@ -62,7 +74,6 @@ public class ShipController : MonoBehaviour
     private void OnLook(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
-
         lookX = input.x;
     }
 }
