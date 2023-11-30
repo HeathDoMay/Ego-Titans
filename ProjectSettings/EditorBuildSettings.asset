@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f4c2ec49e99c90340aff1a443cc0f8ae
   - enabled: 1
-    path: Assets/Scenes/1Carson-Prototype1.unity
-    guid: 3ef1c5a3711c1b643abeb0975663c260
+    path: Assets/Scenes/GravityGauntlet.unity
+    guid: 301c1c875b09b214aaa6b3e9b387d844
   m_configObjects: {}
