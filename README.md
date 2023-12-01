@@ -3,7 +3,7 @@
 Group Members:
 Carson McMahan
 Heath May
-Ariah
-Black Holt
+Ariah Sargent
+Black Hilton
 
 # About the Project
