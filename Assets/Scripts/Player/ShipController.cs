@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class ShipController : MonoBehaviour
 {
@@ -12,12 +14,19 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float forwardAcceleration;
     [SerializeField] private float turnAcceleration;
 
+    PlayVFX vfx;
+
     float activeForwardSpeed, activeTurnSpeed;
 
     float movementY;
     float lookX;
 
     public bool isMoving = false;
+
+    private void Awake()
+    {
+        vfx = GetComponent<PlayVFX>();
+    }
 
     private void Start()
     {
@@ -56,10 +65,15 @@ public class ShipController : MonoBehaviour
             // applying both of those movements
             transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
             isMoving = true;
+
+            vfx.StartVFX();
+
         }
         else
         {
             isMoving = false;
+
+            vfx.StopVFX();
         }
     }
 
