@@ -7,6 +7,9 @@ public class StartGame : MonoBehaviour
     [Header("Player Controls Array")]
     [SerializeField] private ShipController[] shipController;
 
+    [Header("AI Controller")]
+    [SerializeField] private AIShip aiPlayer;
+
     [Header("Timer Reference")]
     [SerializeField] private TimerBehaviour timerBehaviour;
 
@@ -27,6 +30,8 @@ public class StartGame : MonoBehaviour
         {
             shipController[i].enabled = false;
         }
+
+        aiPlayer.enabled = false;
     }
 
     private void Update()
@@ -48,5 +53,7 @@ public class StartGame : MonoBehaviour
         {
             shipController[i].enabled = true;
         }
+
+        aiPlayer.enabled = true;
     }
 }

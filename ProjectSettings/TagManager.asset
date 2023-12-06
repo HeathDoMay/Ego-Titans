@@ -8,15 +8,16 @@ TagManager:
   - FinalCheckpoint
   - Boundary
   - SpawnPoint
+  - AI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Track
   - Water
   - UI
-  - P1 Cam
-  - P2 Cam
+  - 
+  - 
   - 
   - 
   - 
