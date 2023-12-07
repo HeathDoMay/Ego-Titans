@@ -17,9 +17,12 @@ public class ShipController : MonoBehaviour
     PlayVFX vfx;
 
     float activeForwardSpeed, activeTurnSpeed;
-
+    public Transform model;
     float movementY;
     float lookX;
+    float tiltMaxLeft = 15;
+    float tiltMaxRight = -15;
+    public GameObject parentModel;
 
     bool isMoving = false;
 
@@ -89,5 +92,46 @@ public class ShipController : MonoBehaviour
     {
         Vector2 input = value.Get<Vector2>();
         lookX = input.x;
+    }
+
+    private void Update()
+    {
+        // if the player is inside the angle we want them in let them tilt
+        if ((parentModel.transform.rotation.eulerAngles.z <= 15 && parentModel.transform.rotation.eulerAngles.z >= -5) || (parentModel.transform.rotation.eulerAngles.z <= 370 && parentModel.transform.rotation.eulerAngles.z >= 345) || parentModel.transform.rotation.eulerAngles.z == 0)
+        {
+            if (lookX > 0)
+            {
+                parentModel.transform.Rotate(0.0f, 0.0f, -0.5f, Space.Self);
+            }
+            else if (lookX < 0)
+            {
+                parentModel.transform.Rotate(0.0f, 0.0f, 0.5f, Space.Self);
+            }
+            
+            
+        }
+        // if they are on the left boundary angle, allow them to tilt right
+        else if (lookX > 0 && (parentModel.transform.rotation.eulerAngles.z >= 15 && parentModel.transform.rotation.eulerAngles.z <= 20))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, -0.5f, Space.Self);
+        }
+        // if they are on the right boundary angle, allow them to tilt left
+        else if (lookX < 0 && (parentModel.transform.rotation.eulerAngles.z <= 345 && parentModel.transform.rotation.eulerAngles.z >= 335))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, 0.5f, Space.Self);
+        }
+
+
+
+        //if no keys are pressed, center ship
+        if ((parentModel.transform.rotation.eulerAngles.z <= 18 && parentModel.transform.rotation.eulerAngles.z >= 0) && lookX == 0)
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, -0.4f, Space.Self);
+        }
+        else if ((parentModel.transform.rotation.eulerAngles.z <= 360 && parentModel.transform.rotation.eulerAngles.z >= 335)  && lookX == 0)
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, 0.4f, Space.Self);
+        }
+
     }
 }
