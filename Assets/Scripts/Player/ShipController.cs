@@ -21,7 +21,7 @@ public class ShipController : MonoBehaviour
     float movementY;
     float lookX;
 
-    public bool isMoving = false;
+    bool isMoving = false;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class ShipController : MonoBehaviour
         //Cursor.visible = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Look();
         Movement();

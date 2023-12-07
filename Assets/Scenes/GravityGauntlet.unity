@@ -1463,7 +1463,7 @@ PrefabInstance:
     - target: {fileID: 7716478381457991978, guid: aed5cc48fbdfb6e4bb2983f361a28185,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3313,11 +3313,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerOne
       objectReference: {fileID: 0}
+    - target: {fileID: 5399689913454956783, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0038874447
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399689913454956783, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0038874447
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399689913454956783, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7070961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399689913454956783, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7070961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399689913454956783, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.37
+      objectReference: {fileID: 0}
     - target: {fileID: 6114784038074890728, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7763934807271180067, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 1003148114}
     - target: {fileID: 7763934807271180067, guid: 7e1feb55b47b2544799d870fe6038698,
         type: 3}
       propertyPath: forwardSpeed
@@ -3368,6 +3398,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 6
       addedObject: {fileID: 1194411747}
+    - targetCorrespondingSourceObject: {fileID: 3097429403373057758, guid: 7e1feb55b47b2544799d870fe6038698,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1194411753}
   m_SourcePrefab: {fileID: 100100000, guid: 7e1feb55b47b2544799d870fe6038698, type: 3}
 --- !u!4 &575948917 stripped
 Transform:
@@ -5441,7 +5475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Created By: \nCarson McMahan, Heath May, Black Holt, Ariah"
+  m_text: "Created By: \nCarson McMahan, Heath May, Blake Holt, Ariah"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 05ea35ff47109174a959caf9632e33a7, type: 2}
   m_sharedMaterial: {fileID: -2802820869665198923, guid: 05ea35ff47109174a959caf9632e33a7,
@@ -6690,6 +6724,24 @@ MonoBehaviour:
   vfxToPlay:
   - {fileID: 1943942637}
   - {fileID: 717694020}
+--- !u!114 &1194411753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246120948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b585fcdcc2c0d57489a1ef1401bcac52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  lookSpeed: 25
+  forwardAcceleration: 5
+  turnAcceleration: 1
+  gravity: 2000
+  delay: 1
 --- !u!1 &1199869944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2441894234810549564, guid: 1866db38c236e764896377a9614bccf1,
