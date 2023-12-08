@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("Ariah-Prototype");
+        SceneManager.LoadScene("GravityGauntlet");
     }
 
     public void Options()
