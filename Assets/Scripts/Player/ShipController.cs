@@ -5,24 +5,25 @@ using UnityEngine.VFX;
 
 public class ShipController : MonoBehaviour
 {
-    
     [Header("Movement Values")]
     [SerializeField] private float forwardSpeed;
     [SerializeField] private float lookSpeed;
+
+    float activeForwardSpeed, activeTurnSpeed;
 
     [Header("Acceleration Values")]
     [SerializeField] private float forwardAcceleration;
     [SerializeField] private float turnAcceleration;
 
+    [Header("For Tilting")]
+    [SerializeField] private GameObject parentModel;
+    [SerializeField] private Transform model;
+
     PlayVFX vfx;
 
-    float activeForwardSpeed, activeTurnSpeed;
-    public Transform model;
     float movementY;
     float lookX;
-    float tiltMaxLeft = 15;
-    float tiltMaxRight = -15;
-    public GameObject parentModel;
+    
 
     bool isMoving = false;
 
@@ -31,17 +32,13 @@ public class ShipController : MonoBehaviour
         vfx = GetComponent<PlayVFX>();
     }
 
-    private void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.visible = false;
-    }
-
     private void FixedUpdate()
     {
         Look();
         Movement();
     }
+
+    #region Look and Movement
 
     private void Look()
     {
@@ -80,6 +77,10 @@ public class ShipController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Setting Input Values
+
     // setting the global variables to the correct input value
     private void OnMove(InputValue value)
     {
@@ -93,6 +94,8 @@ public class ShipController : MonoBehaviour
         Vector2 input = value.Get<Vector2>();
         lookX = input.x;
     }
+
+    #endregion
 
     private void Update()
     {
@@ -121,8 +124,6 @@ public class ShipController : MonoBehaviour
             parentModel.transform.Rotate(0.0f, 0.0f, 0.5f, Space.Self);
         }
 
-
-
         //if no keys are pressed, center ship
         if ((parentModel.transform.rotation.eulerAngles.z <= 18 && parentModel.transform.rotation.eulerAngles.z >= 0) && lookX == 0)
         {
@@ -132,6 +133,5 @@ public class ShipController : MonoBehaviour
         {
             parentModel.transform.Rotate(0.0f, 0.0f, 0.4f, Space.Self);
         }
-
     }
 }

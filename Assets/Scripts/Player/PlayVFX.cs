@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayVFX : MonoBehaviour
 {
-    [SerializeField] private GameObject[] vfxToPlay;
+    [Tooltip("All vxf should be a child of an empty game object. That empty should be assigned to this variable.")]
+    [SerializeField] private GameObject vfxToPlay;
 
     private void Start()
     {
@@ -11,17 +12,11 @@ public class PlayVFX : MonoBehaviour
 
     public void StartVFX()
     {
-        for( int i = 0;i < vfxToPlay.Length;i++)
-        {
-            vfxToPlay[i].SetActive(true);
-        }
+        vfxToPlay.SetActive(true);
     }
 
     public void StopVFX()
     {
-        for (int i = 0; i < vfxToPlay.Length; i++)
-        {
-            vfxToPlay[i].SetActive(false);
-        }
+        vfxToPlay.SetActive(false);
     }
 }

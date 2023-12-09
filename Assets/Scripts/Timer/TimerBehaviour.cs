@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,5 +30,10 @@ public class TimerBehaviour : MonoBehaviour
     private void Update()
     {
         timer.Tick(Time.deltaTime);
+
+        if(durationSeconds <= 0)
+        {
+            durationSeconds = 0;
+        }
     }
 }
