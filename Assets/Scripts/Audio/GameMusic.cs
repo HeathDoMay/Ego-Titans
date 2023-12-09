@@ -23,6 +23,7 @@ public class GameMusic : MonoBehaviour
                 audioSource.clip = musicTrack;
 
                 audioSource.Play();
+                Debug.Log("Game music plays.");
             }
             else
             {
