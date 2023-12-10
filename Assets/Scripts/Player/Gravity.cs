@@ -10,6 +10,10 @@ public class Gravity : MonoBehaviour
     [Header("Delay in Seconds")]
     [SerializeField] private float delay;
 
+    [Header("SFX When Gravity Changes")]
+    [SerializeField] private AudioClip gravitySFX;
+
+    AudioSource audioSource;
     Rigidbody rb;
     bool isGravityUp = true;
     bool canUseGravity = true;
@@ -17,6 +21,7 @@ public class Gravity : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = rb.GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -44,6 +49,8 @@ public class Gravity : MonoBehaviour
             {
                 // adding gravity and the rotation
                 rb.AddForce(Vector3.up * gravity);
+                audioSource.PlayOneShot(gravitySFX);
+
                 StartCoroutine(Rotate(180));
 
                 // setting bool back to flase then calling a function setting it to true with a delay
@@ -54,6 +61,8 @@ public class Gravity : MonoBehaviour
             {
                 // adding gravity and the rotation
                 rb.AddForce(Vector3.down * gravity);
+                audioSource.PlayOneShot(gravitySFX);
+
                 StartCoroutine(Rotate(-180));
 
                 // setting bool back to flase then calling a function setting it to true with a delay
