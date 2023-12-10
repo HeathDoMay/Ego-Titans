@@ -23,7 +23,6 @@ public class ShipController : MonoBehaviour
 
     float movementY;
     float lookX;
-    
 
     bool isMoving = false;
 
@@ -59,15 +58,15 @@ public class ShipController : MonoBehaviour
     {
         // forward movement
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, movementY * forwardSpeed, forwardAcceleration * Time.deltaTime);
+        
 
-        if(movementY > 0 || movementY < 0)
+        if (movementY > 0 || movementY < 0)
         {
             // applying both of those movements
             transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
             isMoving = true;
 
             vfx.StartVFX();
-
         }
         else
         {

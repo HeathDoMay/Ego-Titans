@@ -44,6 +44,4 @@ public class GameMusic : MonoBehaviour
     {
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
-
-    
 }
