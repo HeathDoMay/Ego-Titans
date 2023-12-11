@@ -37,7 +37,7 @@ public class SpawnMoons : MonoBehaviour
 
         if (canSpawn == true)
         {
-            // instantiate the moon and inciment an int
+            // instantiate the moon and increment  an int
             Instantiate(moon, spawnPos, Quaternion.identity);
             objectsSpawned++;
 

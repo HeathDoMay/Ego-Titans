@@ -28,11 +28,15 @@ public class TrackCheckpoints : MonoBehaviour
         Transform checkpointsTransform = transform.Find("Checkpoints");
         checkpointSingleList = new List<CheckpointSingle>();
 
-        // grabbing all of the transforms inside of the Checkpoints transform
         foreach (Transform checkpointSingleTransform in checkpointsTransform)
         {
+            // grabbing the component
             CheckpointSingle checkpointSingle = checkpointSingleTransform.GetComponent<CheckpointSingle>();
+
+            // calling a function SetTrackCheckpoints and calling this script
             checkpointSingle.SetTrackCheckpoints(this);
+
+            // adding all the checkpoint to the list
             checkpointSingleList.Add(checkpointSingle);
         }
 
@@ -59,6 +63,7 @@ public class TrackCheckpoints : MonoBehaviour
             // loops back to zero after going through all the checkpoints
             nextCheckpointSingleIndexList[racerTransformList.IndexOf(racerTransform)] = (nextCheckpointSingleIndex + 1) % checkpointSingleList.Count;
 
+            // last checkpoint in the list
             if (nextCheckpointSingleIndex == checkpointSingleList.Count - 1)
             {
                 if(racerTransform.name == "PlayerOne")
@@ -71,6 +76,7 @@ public class TrackCheckpoints : MonoBehaviour
                     playerTwoLaps.laps++;
                 }
 
+                // either player have complete the total amount of laps, spawn the finishline
                 if (playerOneLaps.laps == lapsToComplete || playerTwoLaps.laps == lapsToComplete)
                     SpawnFinishLine.Invoke();
             }
