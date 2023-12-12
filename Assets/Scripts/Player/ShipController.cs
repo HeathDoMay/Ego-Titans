@@ -22,13 +22,16 @@ public class ShipController : MonoBehaviour
     PlayVFX vfx;
 
     float movementY;
-    float lookX;
+    public float lookX;
 
     bool isMoving = false;
+    public AudioSource engineFiring;
 
     private void Awake()
     {
+        engineFiring = GetComponent<AudioSource>();
         vfx = GetComponent<PlayVFX>();
+        engineFiring.Pause();
     }
 
     private void FixedUpdate()
@@ -48,7 +51,8 @@ public class ShipController : MonoBehaviour
         {
             // lerping for rotation
             activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
-
+            
+            
             // applying that rotation
             transform.Rotate(Vector3.up, activeTurnSpeed);
         }
@@ -67,12 +71,14 @@ public class ShipController : MonoBehaviour
             isMoving = true;
 
             vfx.StartVFX();
+            engineFiring.UnPause();
         }
         else
         {
             isMoving = false;
 
             vfx.StopVFX();
+            engineFiring.Pause();
         }
     }
 

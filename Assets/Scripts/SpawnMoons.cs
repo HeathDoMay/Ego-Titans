@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnMoons : MonoBehaviour
 {
     [SerializeField] private GameObject moon;
-    [SerializeField] private int maxMoons = 10;
+    [SerializeField] private int maxMoons = 3;
 
-    bool canSpawn;
+    bool canSpawn = false;
     int objectsSpawned = 0;
 
     private void Start()
