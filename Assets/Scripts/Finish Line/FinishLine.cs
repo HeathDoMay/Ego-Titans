@@ -20,6 +20,8 @@ public class FinishLine : MonoBehaviour
     {
         finishLineText.text = "";
        // restartButton.SetActive(false);
+
+        finishLineText.color = Color.white;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,7 +30,8 @@ public class FinishLine : MonoBehaviour
         {
             if(playerOneLaps.laps == trackCheckpoints.lapsToComplete) 
             {
-                finishLineText.text = $"{other.gameObject.name} Wins!";
+                finishLineText.text = "Player One Wins!";
+                finishLineText.color = new Color32(233, 154, 34, 255);
                 restartButton.SetActive(true);
             }
             else
@@ -41,7 +44,8 @@ public class FinishLine : MonoBehaviour
         {
             if (playerTwoLaps.laps == trackCheckpoints.lapsToComplete)
             {
-                finishLineText.text = $"{other.gameObject.name} Wins!";
+                finishLineText.text = "Player Two Wins!";
+                finishLineText.color = new Color32(215, 75, 255, 255);
                 restartButton.SetActive(true);
             }
             else
