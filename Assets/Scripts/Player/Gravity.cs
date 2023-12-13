@@ -13,12 +13,11 @@ public class Gravity : MonoBehaviour
     [Header("SFX When Gravity Changes")]
     [SerializeField] private AudioClip gravitySFX;
 
+    [Header("Tilting When Flipped")]
     [SerializeField] private GameObject parentModel;
+    [SerializeField] private GameObject ShipObject;
 
-    float movementY;
-    float lookX;
     private ShipController lookXscript;
-    public GameObject ShipObject;
 
     AudioSource audioSource;
     Rigidbody rb;
@@ -26,8 +25,6 @@ public class Gravity : MonoBehaviour
     bool canUseGravity = true;
     bool gravTilt = false;
 
-
-    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -108,7 +105,6 @@ public class Gravity : MonoBehaviour
         // if the player is inside the angle we want them in let them tilt
         if ((parentModel.transform.rotation.eulerAngles.z <= 195 && parentModel.transform.rotation.eulerAngles.z >= 165))
         {
-            Debug.Log(lookX);
             if (lookXscript.lookX > 0)
             {
                 parentModel.transform.Rotate(0.0f, 0.0f, -0.5f, Space.Self);

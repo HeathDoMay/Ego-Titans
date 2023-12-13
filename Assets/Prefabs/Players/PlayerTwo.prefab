@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1759305385601133388}
   - component: {fileID: 796391264080293942}
-  - component: {fileID: 3906783744788439967}
   - component: {fileID: 8497981804896043740}
   m_Layer: 0
   m_Name: Camera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3906783744788439967
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793958743087774097}
-  m_Enabled: 0
 --- !u!114 &8497981804896043740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,18 +228,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3c4b0e6ff35440a46a92ab2232ab51e2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b58c7c2a53d23024cb954443f3671fb3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 25.78
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -372,6 +363,8 @@ MonoBehaviour:
   turnAcceleration: 5
   parentModel: {fileID: 7870715765898088344}
   model: {fileID: 4433510919189713704}
+  lookX: 0
+  engineFiring: {fileID: 5445816869013305494}
 --- !u!114 &3539202041021545080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +380,8 @@ MonoBehaviour:
   gravity: 1500
   delay: 2
   gravitySFX: {fileID: 8300000, guid: b9e48797f6cc3b4478f703faccc55aa7, type: 3}
+  parentModel: {fileID: 7870715765898088344}
+  ShipObject: {fileID: 1162327592231902332}
 --- !u!114 &826353013182520103
 MonoBehaviour:
   m_ObjectHideFlags: 0

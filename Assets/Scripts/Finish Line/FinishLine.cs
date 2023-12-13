@@ -33,6 +33,8 @@ public class FinishLine : MonoBehaviour
                 finishLineText.text = "Player One Wins!";
                 finishLineText.color = new Color32(233, 154, 34, 255);
                 restartButton.SetActive(true);
+
+                Destroy(gameObject);
             }
             else
             {
@@ -47,6 +49,8 @@ public class FinishLine : MonoBehaviour
                 finishLineText.text = "Player Two Wins!";
                 finishLineText.color = new Color32(215, 75, 255, 255);
                 restartButton.SetActive(true);
+
+                Destroy(gameObject);
             }
             else
             {

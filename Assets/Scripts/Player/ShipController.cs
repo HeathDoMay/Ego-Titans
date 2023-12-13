@@ -62,7 +62,6 @@ public class ShipController : MonoBehaviour
     {
         // forward movement
         activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, movementY * forwardSpeed, forwardAcceleration * Time.deltaTime);
-        
 
         if (movementY > 0 || movementY < 0)
         {
@@ -115,8 +114,6 @@ public class ShipController : MonoBehaviour
             {
                 parentModel.transform.Rotate(0.0f, 0.0f, 0.5f, Space.Self);
             }
-            
-            
         }
         // if they are on the left boundary angle, allow them to tilt right
         else if (lookX > 0 && (parentModel.transform.rotation.eulerAngles.z >= 15 && parentModel.transform.rotation.eulerAngles.z <= 20))
