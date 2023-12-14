@@ -21,11 +21,21 @@ public class ArdunioController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float delay;
 
+    PlayVFX playVFX;
+
     float activeForwardSpeed, activeTurnSpeed;
 
     Rigidbody rb;
     bool isGravityUp = true;
     bool canUseGravity = true;
+
+    bool canMoveForward = false;
+    bool canMoveBackward = false;
+    bool canTurnLeft = false;
+    bool canTurnRight = false;
+
+    [SerializeField] private GameObject parentModel;
+    bool gravTilt = false;
 
     string method;
     int data;
@@ -39,6 +49,7 @@ public class ArdunioController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playVFX = GetComponent<PlayVFX>();
     }
 
     SerialPort sp = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
@@ -60,6 +71,99 @@ public class ArdunioController : MonoBehaviour
         IsOpen();
     }
 
+    private void Update()
+    {
+        if(canMoveForward)
+        {
+            activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, speed, forwardAcceleration * Time.deltaTime);
+            transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
+
+            playVFX.StartVFX();
+        }
+        else
+        {
+            playVFX.StopVFX();
+        }
+
+        if(canMoveBackward)
+        {
+            activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, speed, forwardAcceleration * Time.deltaTime);
+            transform.position += activeForwardSpeed * Time.deltaTime * -transform.forward;
+
+            playVFX.StartVFX();
+        }
+        else
+        {
+            playVFX.StopVFX();
+        }
+
+        if(canTurnLeft)
+        {
+            float horizontalRotation = lookSpeed * Time.deltaTime;
+
+            // lerping for rotation
+            activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
+
+            // applying that rotation
+            transform.Rotate(-Vector3.up, activeTurnSpeed);
+        }
+
+        if(canTurnRight)
+        {
+            float horizontalRotation = lookSpeed * Time.deltaTime;
+
+            // lerping for rotation
+            activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
+
+            // applying that rotation
+            transform.Rotate(Vector3.up, activeTurnSpeed);
+        }
+
+        if (gravTilt == true)
+        {
+            TiltingGrav();
+        }
+
+
+
+        // if the player is inside the angle we want them in let them tilt
+        if ((parentModel.transform.rotation.eulerAngles.z <= 15 && parentModel.transform.rotation.eulerAngles.z >= -5) || (parentModel.transform.rotation.eulerAngles.z <= 370 && parentModel.transform.rotation.eulerAngles.z >= 345) || parentModel.transform.rotation.eulerAngles.z == 0)
+        {
+            if (canTurnRight)
+            {
+                parentModel.transform.Rotate(0.0f, 0.0f, -1f, Space.Self);
+            }
+            else if (canTurnLeft)
+            {
+                parentModel.transform.Rotate(0.0f, 0.0f, 1f, Space.Self);
+            }
+        }
+        // if they are on the left boundary angle, allow them to tilt right
+        else if (canTurnRight && (parentModel.transform.rotation.eulerAngles.z >= 15 && parentModel.transform.rotation.eulerAngles.z <= 20))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, -1f, Space.Self);
+        }
+        // if they are on the right boundary angle, allow them to tilt left
+        else if (canTurnLeft && (parentModel.transform.rotation.eulerAngles.z <= 345 && parentModel.transform.rotation.eulerAngles.z >= 335))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, 1f, Space.Self);
+        }
+
+        //if no keys are pressed, center ship
+        if ((parentModel.transform.rotation.eulerAngles.z <= 18 && parentModel.transform.rotation.eulerAngles.z >= 0) && (!canTurnLeft && !canTurnRight))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, -0.4f, Space.Self);
+        }
+        else if ((parentModel.transform.rotation.eulerAngles.z <= 360 && parentModel.transform.rotation.eulerAngles.z >= 335) && (!canTurnLeft && !canTurnRight))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, 0.4f, Space.Self);
+        }
+
+
+
+
+    }
+
     private void ButtonPressed()
     {
         // if bool is true then flip gravity
@@ -72,7 +176,9 @@ public class ArdunioController : MonoBehaviour
                 StartCoroutine(Rotate(180));
 
                 // setting bool back to flase then calling a function setting it to true with a delay
+                gravTilt = true;
                 canUseGravity = false;
+                
                 Invoke(nameof(EnableInput), delay);
             }
             else
@@ -82,7 +188,9 @@ public class ArdunioController : MonoBehaviour
                 StartCoroutine(Rotate(-180));
 
                 // setting bool back to flase then calling a function setting it to true with a delay
+                gravTilt = false;
                 canUseGravity = false;
+                
                 Invoke(nameof(EnableInput), delay);
             }
 
@@ -97,6 +205,43 @@ public class ArdunioController : MonoBehaviour
         return canUseGravity = true;
     }
 
+
+
+    void TiltingGrav()
+    {
+        if (parentModel.transform.rotation.eulerAngles.z <= 195 && parentModel.transform.rotation.eulerAngles.z >= 165)
+        {
+            if (canTurnRight)
+            {
+                parentModel.transform.Rotate(0.0f, 0.0f, -1f, Space.Self);
+            }
+            else if (canTurnLeft)
+            {
+                parentModel.transform.Rotate(0.0f, 0.0f, 1f, Space.Self);
+            }
+        }
+        // if they are on the left boundary angle, allow them to tilt right
+        else if (canTurnRight && (parentModel.transform.rotation.eulerAngles.z >= 195 && parentModel.transform.rotation.eulerAngles.z <= 200))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, -1f, Space.Self);
+        }
+        // if they are on the right boundary angle, allow them to tilt left
+        else if (canTurnLeft && (parentModel.transform.rotation.eulerAngles.z <= 165 && parentModel.transform.rotation.eulerAngles.z >= 160))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, 1f, Space.Self);
+        }
+
+        //if no keys are pressed, center ship
+        if ((parentModel.transform.rotation.eulerAngles.z <= 200 && parentModel.transform.rotation.eulerAngles.z >= 180) && (!canTurnLeft && !canTurnRight))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, -0.4f, Space.Self);
+        }
+        else if ((parentModel.transform.rotation.eulerAngles.z <= 180 && parentModel.transform.rotation.eulerAngles.z >= 160) && (!canTurnLeft && !canTurnRight))
+        {
+            parentModel.transform.Rotate(0.0f, 0.0f, 0.4f, Space.Self);
+        }
+    }
+
     private void ButtonReleased()
     {
         Debug.Log("The button was released");
@@ -104,57 +249,50 @@ public class ArdunioController : MonoBehaviour
 
     private void MoveForward()
     {
-        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, speed, forwardAcceleration * Time.deltaTime);
-        transform.position += activeForwardSpeed * Time.deltaTime * transform.forward;
-
+        canMoveBackward = false;
+        canMoveForward = true;
 
        // Debug.Log("The joystick has been moved forward");
     }
 
     private void MoveBackward()
     {
-        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, speed, forwardAcceleration * Time.deltaTime);
-        transform.position += activeForwardSpeed * Time.deltaTime * -transform.forward;
+        canMoveBackward = true;
+        canMoveForward = false;
 
         //Debug.Log("The joystick has been moved backward");
     }
 
     private void StopFowardOrBackwardMovement()
     {
+        canMoveBackward = false;
+        canMoveForward = false;
        // Debug.Log("The joystick is no longer moving forward or backward");
     }
 
     private void MoveLeft()
     {
-        float horizontalRotation = lookSpeed * Time.deltaTime;
-
-        // lerping for rotation
-        activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
-
-        // applying that rotation
-        transform.Rotate(-Vector3.up, activeTurnSpeed);
-
+        canTurnLeft = true;
+        canTurnRight = false;
 
         //Debug.Log("The joystick has been moved to the left");
     }
     private void MoveRight()
     {
-        float horizontalRotation = lookSpeed * Time.deltaTime;
+        canTurnRight = true;
+        canTurnLeft = false;
 
-        // lerping for rotation
-        activeTurnSpeed = Mathf.Lerp(activeTurnSpeed, horizontalRotation, turnAcceleration * Time.deltaTime);
-
-        // applying that rotation
-        transform.Rotate(Vector3.up, activeTurnSpeed);
-
-
+        
 
         //Debug.Log("The joystick has been moved to the right");
     }
 
     private void StopLeftOrRightMovement()
     {
-       // Debug.Log("The joystick is no longer moving left or right");
+        canTurnLeft = false;
+        canTurnRight = false;
+
+        // Debug.Log("The joystick is no longer moving left or right");
     }
 
     private void IsOpen()

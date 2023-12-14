@@ -16,6 +16,8 @@ public class StartGame : MonoBehaviour
     [Header("Timer Text")]
     [SerializeField] private TextMeshProUGUI countDownText;
 
+    public ArdunioController ardunioController;
+
     IEnumerator waiter()
     {
         yield return new WaitForSeconds(8);
@@ -32,6 +34,7 @@ public class StartGame : MonoBehaviour
         }
 
         aiPlayer.enabled = false;
+        ardunioController.enabled = false;
     }
 
     private void Update()
@@ -55,5 +58,6 @@ public class StartGame : MonoBehaviour
         }
 
         aiPlayer.enabled = true;
+        ardunioController.enabled = true;
     }
 }
